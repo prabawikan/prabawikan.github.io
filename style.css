@@ -1,0 +1,14 @@
+
+section .container{
+    padding-top: 5rem;
+}
+.collapse .navbar-nav .nav-item{
+    margin-left: 1rem;
+}
+#home{
+    height: 100vh;  
+}
+footer .text-center{
+    background-color: rgb(53, 149, 104); 
+    margin-top: 10rem;
+}
