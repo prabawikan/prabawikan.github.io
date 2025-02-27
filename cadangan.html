@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Portfolio</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS Libraries -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ffd700;
+        --dark: #1a1a1a;
+        --light: #f8f9fa;
+        --gradient: linear-gradient(45deg, #1a1a1a, #ffd700);
+      }
+
+      /* General Styles */
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--dark);
+        color: var(--light);
+        overflow-x: hidden;
+      }
+
+      section h2 {
+        font-weight: 600;
+      }
+
+      .profile-bio h2 {
+        display: inline-block;
+        margin-bottom: 2rem;
+        font-weight: 500;
+        border-bottom: 2px solid rgba(255, 215, 0, 0.5);
+      }
+      .profile-bio p.lead {
+        font-weight: 500;
+      }
+      .profile-bio p {
+        font-weight: 300;
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        transition: all 0.3s ease;
+        background-color: transparent;
+      }
+
+      .navbar.scrolled {
+        background-color: rgba(26, 26, 26, 0.95);
+        box-shadow: 0 2px 10px rgba(255, 215, 0, 0.1);
+      }
+
+      .nav-link {
+        position: relative;
+        color: var(--light) !important;
+        padding: 0.5rem 1rem;
+        margin: 0 0.5rem;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--primary);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        background: linear-gradient(
+            rgba(26, 26, 26, 0.9),
+            rgba(26, 26, 26, 0.9)
+          ),
+          url('/api/placeholder/1920/1080');
+        background-attachment: fixed;
+        background-size: cover;
+        position: relative;
+        box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+      }
+
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+      .font-typed {
+        font-size: 3rem;
+        font-weight: 500;
+      }
+
+      .profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 4px solid var(--primary);
+        box-shadow: 0 0 20px var(--primary);
+        animation: glow 2s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 10px var(--primary);
+        }
+        to {
+          box-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary);
+        }
+      }
+
+      /* Custom Button */
+      .btn-custom {
+        background: linear-gradient(45deg, var(--dark), var(--primary));
+        color: var(--light);
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-custom::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .btn-custom:hover::before {
+        left: 100%;
+      }
+
+      /* Profile Section */
+      #profile {
+        /* border-top: 2px solid rgba(255, 215, 0, 0.5); */
+      }
+      .profile-section {
+        position: relative;
+        background: linear-gradient(
+          45deg,
+          rgba(26, 26, 26, 0.9),
+          rgba(26, 26, 26, 0.95)
+        );
+        border-radius: 20px;
+        overflow: hidden;
+        padding: 5rem 0 3rem 0;
+      }
+
+      .profile-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .profile-image-container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+      }
+
+      .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+      }
+
+      .profile-frame {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border: 2px solid var(--primary);
+        border-radius: 25px;
+        animation: frameAnimation 3s ease-in-out infinite;
+      }
+
+      @keyframes frameAnimation {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 1;
+        }
+      }
+
+      .profile-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .stat-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 215, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 215, 0, 0.1);
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        color: var(--primary);
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .profile-bio {
+        position: relative;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 15px;
+      }
+
+      .bio-tag {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: rgba(255, 215, 0, 0.1);
+        border-radius: 20px;
+        margin: 0.5rem;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+
+      .bio-tag:hover {
+        background: var(--primary);
+        color: var(--dark);
+        transform: translateY(-2px);
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .tech-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        font-size: 0.9rem;
+      }
+
+      .tech-item i {
+        color: var(--primary);
+      }
+
+      .profile-cta {
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      .btn-profile {
+        background: linear-gradient(45deg, var(--primary), transparent);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        color: var(--light);
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-profile::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .btn-profile:hover::before {
+        left: 100%;
+      }
+
+      /* Project Cards */
+      .project-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        background: var(--dark);
+        border: 1px solid rgba(255, 215, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+      }
+
+      .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(26, 26, 26, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: 0.3s ease;
+      }
+
+      .project-card:hover .project-overlay {
+        opacity: 1;
+      }
+
+      /* Technology Icons */
+      .tech-icon {
+        font-size: 3rem;
+        color: var(--light);
+        margin: 15px;
+        transition: all 0.3s ease;
+      }
+
+      .tech-icon:hover {
+        color: var(--primary);
+        filter: drop-shadow(0 0 10px var(--primary));
+        transform: translateY(-5px);
+      }
+
+      /* Contact Form */
+      .form-floating input,
+      .form-floating textarea {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 215, 0, 0.1);
+        color: var(--light);
+      }
+
+      .form-floating input:focus,
+      .form-floating textarea:focus {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: var(--primary);
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        color: var(--light);
+      }
+
+      .form-floating label {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Social Icons */
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--dark);
+        border: 1px solid var(--primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 10px;
+        color: var(--primary);
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        background: var(--primary);
+        color: var(--dark);
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+      }
+
+      .hexagon-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .hexagon {
+        width: 120px;
+        height: 140px;
+        background: rgba(255, 215, 0, 0.1);
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .hexagon:hover {
+        background: var(--primary);
+        transform: scale(1.1);
+      }
+
+      .hexagon .content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hexagon i {
+        font-size: 2rem;
+      }
+
+      @keyframes progressAnimation {
+        0% {
+          width: 0;
+        }
+      }
+
+      /* About Section */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 215, 0, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(255, 215, 0, 0.15);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        gap: 1rem;
+      }
+
+      .icon-wrapper {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(45deg, var(--primary), transparent);
+        border-radius: 12px;
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+
+      .skills-container {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .skill-category {
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      .skill-category h5 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .skill-category h5::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+
+      .skill-category:hover h5::after {
+        width: 100%;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .skill-tag {
+        background: rgba(255, 215, 0, 0.1);
+        color: var(--light);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        cursor: default;
+      }
+
+      .skill-tag:hover {
+        background: rgba(255, 215, 0, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.1);
+      }
+
+      .cert-list {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .cert-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+      }
+
+      .cert-item:hover {
+        transform: translateX(10px);
+        background: rgba(255, 215, 0, 0.05);
+      }
+
+      .cert-content h5 {
+        color: var(--primary);
+        margin-bottom: 0.25rem;
+      }
+
+      .cert-content p {
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      .cert-date {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 215, 0, 0.1);
+        padding: 0.2rem 0.8rem;
+        border-radius: 12px;
+      }
+
+      .cert-icon {
+        color: var(--primary);
+        font-size: 1.5rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Certificate Item */
+      .cert-item {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .cert-item:hover {
+        transform: translateX(10px);
+        background: rgba(255, 215, 0, 0.1);
+      }
+
+      .modal-cert-img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--primary)">
+          PRABAWIKAN
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center" id="home">
+      <div id="particles-js"></div>
+      <div class="container position-relative">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <img src="1.jpg" alt="Profile" class="profile-img mb-4" />
+            <h1 class="display-4 mb-3 font-typed">
+              I'm <span class="typed"></span>
+            </h1>
+            <p class="lead mb-4">
+              Building scalable and efficient server-side applications
+            </p>
+            <div class="d-flex gap-3">
+              <a href="#projects" class="btn btn-custom">View Projects</a>
+              <a href="#contact" class="btn btn-custom">Contact Me</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="py-5" id="profile">
+      <div class="container">
+        <h2 class="text-center" data-aos="fade-up">Profile</h2>
+        <div class="profile-section">
+          <div class="container">
+            <div class="profile-content">
+              <div class="row align-items-center">
+                <div class="col-lg-5">
+                  <div class="profile-image-container" data-aos="fade-right">
+                    <img src="1.jpg" alt="Profile" class="profile-image" />
+                    <div class="profile-frame"></div>
+                  </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                  <div class="profile-bio">
+                    <h2 class="mb-4">Prabawikan Azhar Himawan</h2>
+                    <p class="lead mb-4">
+                      Informatics Student | Universitas Islam Indonesia
+                    </p>
+
+                    <p class="mb-4">
+                      A 6th-semester Informatics student at Universitas Islam
+                      Indonesia with a strong passion for software development
+                      and technology innovation. Experienced in building
+                      scalable web applications, crafting seamless user
+                      experiences, and optimizing backend systems.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-5 bg-dark" id="projects">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Projects</h2>
+
+        <div class="row" data-aos="fade-up">
+          <!-- Project Card 1 -->
+          <div class="col-md-4 mb-4" data-filter="web">
+            <div class="project-card">
+              <img src="1.jpg" alt="Project 1" class="img-fluid" />
+              <div class="project-overlay">
+                <div class="text-center">
+                  <h5>E-Commerce Platform</h5>
+                  <button
+                    class="btn btn-custom btn-sm mt-2"
+                    onclick="openProjectModal('E-Commerce Platform', 'A full-featured e-commerce platform built with React and Node.js.', ['React', 'Node.js', 'MongoDB', 'Express'], '1.jpg')"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="col-md-4 mb-4" data-filter="ui">
+            <div class="project-card">
+              <img src="1.jpg" alt="Project 2" class="img-fluid" />
+              <div class="project-overlay">
+                <div class="text-center">
+                  <h5>Mobile App UI</h5>
+                  <button
+                    class="btn btn-custom btn-sm mt-2"
+                    onclick="openProjectModal('Mobile App UI', 'A modern mobile app interface designed for optimal user experience.', ['Flutter', 'Firebase', 'UI/UX Design'], '1.jpg')"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="col-md-4 mb-4" data-filter="app">
+            <div class="project-card">
+              <img src="1.jpg" alt="Project 3" class="img-fluid" />
+              <div class="project-overlay">
+                <div class="text-center">
+                  <h5>Task Manager App</h5>
+                  <button
+                    class="btn btn-custom btn-sm mt-2"
+                    onclick="openProjectModal('Task Manager App', 'A comprehensive task management application with real-time updates.', ['React Native', 'Redux', 'Node.js', 'MongoDB'], '1.jpg')"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Single Reusable Project Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header border-bottom border-primary">
+            <h5 class="modal-title" id="modalTitle"></h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img id="modalImage" src="" alt="Project" class="img-fluid mb-3" />
+            <h6>Description</h6>
+            <p id="modalDescription"></p>
+            <h6>Technologies Used</h6>
+            <ul id="modalTechnologies"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="py-5" id="about">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">About Me</h2>
+
+        <div class="row g-4">
+          <!-- Skills Card -->
+          <div class="col-lg-6" data-aos="fade-up">
+            <div class="glass-card">
+              <div class="card-header">
+                <div class="icon-wrapper">
+                  <i class="fas fa-code"></i>
+                </div>
+                <h4>Technical Skills</h4>
+              </div>
+              <div class="skills-container">
+                <div class="skill-category">
+                  <h5>Programming Languages</h5>
+                  <div class="skill-tags">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">PHP</span>
+                  </div>
+                </div>
+
+                <div class="skill-category">
+                  <h5>Frontend Development</h5>
+                  <div class="skill-tags">
+                    <span class="skill-tag">HTML5/CSS3</span>
+                    <span class="skill-tag">Bootsrap</span>
+                    <span class="skill-tag">Tailwind</span>
+                  </div>
+                </div>
+
+                <div class="skill-category">
+                  <h5>Backend Development</h5>
+                  <div class="skill-tags">
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">PHP</span>
+                  </div>
+                </div>
+
+                <div class="skill-category">
+                  <h5>Database & Tools</h5>
+                  <div class="skill-tags">
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Firebase</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificates Card -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="glass-card">
+              <div class="card-header">
+                <div class="icon-wrapper">
+                  <i class="fas fa-certificate"></i>
+                </div>
+                <h4>Certifications</h4>
+              </div>
+              <div class="cert-list">
+                <div
+                  class="cert-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#certModal1"
+                >
+                  <div class="cert-content">
+                    <h5>Informatics Expo</h5>
+                    <p>Informatics UII</p>
+                    <span class="cert-date">2024</span>
+                  </div>
+                  <div class="cert-icon">
+                    <i class="fas fa-award"></i>
+                  </div>
+                </div>
+
+                <div
+                  class="cert-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#certModal2"
+                >
+                  <div class="cert-content">
+                    <h5>JavaScript Algorithms</h5>
+                    <p>Codepolitan</p>
+                    <span class="cert-date">2024</span>
+                  </div>
+                  <div class="cert-icon">
+                    <i class="fas fa-award"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Certificate Modals -->
+      <div class="modal fade" id="certModal1" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-bottom border-primary">
+              <h5 class="modal-title">Informatics Expo</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+              <img
+                src="carbonea.png"
+                alt="Informatics Expo UII"
+                class="modal-cert-img"
+              />
+              <div class="mt-4">
+                <h6>Informatics UII</h6>
+                <p>Issued: 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="certModal2" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-bottom border-primary">
+              <h5 class="modal-title">JavaScript Algorithms Certificate</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+              <img
+                src="/api/placeholder/800/600"
+                alt="JavaScript Algorithms Certificate"
+                class="modal-cert-img"
+              />
+              <div class="mt-4">
+                <h6>Codepolitan</h6>
+                <p>Issued: 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="certModal3" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-bottom border-primary">
+              <h5 class="modal-title">UI/UX Fundamentals Certificate</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+              <img
+                src="/api/placeholder/800/600"
+                alt="UI/UX Fundamentals Certificate"
+                class="modal-cert-img"
+              />
+              <div class="mt-4">
+                <h6>Google</h6>
+                <p>Issued: 2022</p>
+                <p>Credential ID: UX-2022-003</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="py-5 bg-dark" id="tech">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Technologies</h2>
+        <div class="row text-center">
+          <div class="col-md-12" data-aos="fade-up">
+            <i
+              class="fab fa-html5 tech-icon"
+              data-bs-toggle="tooltip"
+              title="HTML5"
+            ></i>
+            <i
+              class="fab fa-css3-alt tech-icon"
+              data-bs-toggle="tooltip"
+              title="CSS3"
+            ></i>
+            <i
+              class="fab fa-js tech-icon"
+              data-bs-toggle="tooltip"
+              title="JavaScript"
+            ></i>
+            <i
+              class="fab fa-react tech-icon"
+              data-bs-toggle="tooltip"
+              title="React"
+            ></i>
+            <i
+              class="fab fa-node tech-icon"
+              data-bs-toggle="tooltip"
+              title="Node.js"
+            ></i>
+            <i
+              class="fab fa-git-alt tech-icon"
+              data-bs-toggle="tooltip"
+              title="Git"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5" id="contact">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Contact Me</h2>
+        <div class="row">
+          <div class="col-lg-6 mx-auto">
+            <form data-aos="fade-up" id="contactForm">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  required
+                />
+                <label for="name">Your Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Your Email"
+                  required
+                />
+                <label for="email">Your Email</label>
+              </div>
+              <div class="form-floating mb-3">
+                <textarea
+                  class="form-control"
+                  id="message"
+                  placeholder="Your Message"
+                  style="height: 150px"
+                  required
+                ></textarea>
+                <label for="message">Your Message</label>
+              </div>
+              <button type="submit" class="btn btn-custom w-100">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="py-4"
+      style="
+        background-color: var(--dark);
+        border-top: 2px solid var(--primary);
+      "
+    >
+      <div class="container text-center">
+        <div class="social-icons mb-3">
+          <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="mb-0">&copy; 2025 Portfolio. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+
+      // Initialize Typed.js
+      new Typed('.typed', {
+        strings: ['Prabawikan Azhar H', 'Web Developer', 'Backend Developer'],
+        typeSpeed: 50,
+        backSpeed: 30,
+        loop: true,
+      });
+
+      // Navbar Scroll Effect
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+          document.querySelector('.navbar').classList.add('scrolled');
+        } else {
+          document.querySelector('.navbar').classList.remove('scrolled');
+        }
+      });
+
+      // Initialize Tooltips
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth',
+          });
+        });
+      });
+
+      // Initialize the project modal
+      const projectModal = new bootstrap.Modal(
+        document.getElementById('projectModal')
+      );
+
+      // Function to open project modal with dynamic content
+      function openProjectModal(title, description, technologies, image) {
+        // Update modal content
+        document.getElementById('modalTitle').textContent = title;
+        document.getElementById('modalDescription').textContent = description;
+        document.getElementById('modalImage').src = image;
+
+        // Clear and update technologies list
+        const techList = document.getElementById('modalTechnologies');
+        techList.innerHTML = '';
+        technologies.forEach((tech) => {
+          const li = document.createElement('li');
+          li.textContent = tech;
+          techList.appendChild(li);
+        });
+
+        // Show the modal
+        projectModal.show();
+      }
+
+      // Initialize Particles.js
+      particlesJS('particles-js', {
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: '#ffd700',
+          },
+          shape: {
+            type: 'circle',
+          },
+          opacity: {
+            value: 0.5,
+            random: false,
+          },
+          size: {
+            value: 3,
+            random: true,
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: '#ffd700',
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 6,
+            direction: 'none',
+            random: false,
+            straight: false,
+            out_mode: 'out',
+            bounce: false,
+          },
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: {
+            onhover: {
+              enable: true,
+              mode: 'repulse',
+            },
+            onclick: {
+              enable: true,
+              mode: 'push',
+            },
+            resize: true,
+          },
+        },
+        retina_detect: true,
+      });
+
+      // Form Validation and Animation
+      const contactForm = document.getElementById('contactForm');
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!this.checkValidity()) {
+          e.stopPropagation();
+          this.classList.add('was-validated');
+          this.querySelector('button[type="submit"]').classList.add('shake');
+          setTimeout(() => {
+            this.querySelector('button[type="submit"]').classList.remove(
+              'shake'
+            );
+          }, 500);
+        } else {
+          // Handle form submission
+          console.log('Form submitted');
+          this.reset();
+        }
+      });
+    </script>
+  </body>
+</html>

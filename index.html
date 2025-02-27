@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Portfolio</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS Libraries -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--primary)">
+          PRABAWIKAN
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center" id="home">
+      <div id="particles-js"></div>
+      <div class="container position-relative">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <img src="profile1.jpg" alt="Profile" class="profile-img mb-4" />
+            <h1 class="display-4 mb-3 font-typed">
+              I'm <span class="typed"></span>
+            </h1>
+            <p class="lead mb-4">
+              Building scalable and efficient server-side applications
+            </p>
+            <div class="d-flex gap-3">
+              <a href="#projects" class="btn btn-custom">View Projects</a>
+              <a href="#contact" class="btn btn-custom">Contact Me</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="py-5" id="profile">
+      <div class="container">
+        <h2 class="text-center" data-aos="fade-up">Profile</h2>
+        <div class="profile-section">
+          <div class="container">
+            <div class="profile-content">
+              <div class="row align-items-center">
+                <div class="col-lg-5">
+                  <div class="profile-image-container" data-aos="fade-right">
+                    <img src="profile2.jpg" alt="Profile" class="profile-image" />
+                    <div class="profile-frame"></div>
+                  </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                  <div class="profile-bio">
+                    <h2 class="mb-4">Prabawikan Azhar Himawan</h2>
+                    <p class="lead mb-4">
+                      Informatics Student | Universitas Islam Indonesia
+                    </p>
+
+                    <p class="mb-4">
+                      A 6th-semester Informatics student at Universitas Islam
+                      Indonesia with a strong passion for software development
+                      and technology innovation. Experienced in building
+                      scalable web applications, crafting seamless user
+                      experiences, and optimizing backend systems.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-5 bg-dark" id="projects">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Projects</h2>
+
+        <div class="row" data-aos="fade-up">
+          <!-- Project Card 1 -->
+          <div class="col-md-4 mb-4" data-filter="web">
+            <div class="project-card">
+              <img src="projek-carbonea.png" alt="Project 1" class="img-fluid" />
+              <div class="project-overlay">
+                <div class="text-center">
+                  <h5>Carbonea (Mobile App)</h5>
+                  <button
+                    class="btn btn-custom btn-sm mt-2"
+                    onclick="openProjectModal('Carbonea (Mobile App)', 'Carbonéa is a mobile application built with Flutter and Firebase, designed to encourage users to adopt eco-friendly transportation habits such as walking and cycling. The app tracks user movement via Google Maps API, calculates distance, duration, and estimated carbon emissions prevented, and converts them into points. It features weekly challenges, a leaderboard system, and reward redemption, promoting sustainability through gamification.', 
+                    ['Dart', 'Flutter', 'Google Maps API', 'Firebase'], 
+                    'projek-carbonea.png')"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="col-md-4 mb-4" data-filter="ui">
+            <div class="project-card">
+              <img src="projek-metastats.png" alt="Project 2" class="img-fluid" />
+              <div class="project-overlay">
+                <div class="text-center">
+                  <h5>MetaStats (Web App)</h5>
+                  <button
+                    class="btn btn-custom btn-sm mt-2"
+                    onclick="openProjectModal('MetaStats (Web App)', 'This MetaStats website, developed using PHP Laravel and MySQL, provides comprehensive performance tracking for Mobile Legends teams and players. It collects and analyzes key metrics such as kills, assists, deaths, gold, damage, turtle, and lord objectives. The platform integrates AI Groq to generate insights on team performance, helping organizations and players make data-driven decisions to optimize their strategies.', ['HTML', 'CSS', 'Javascript', 'PHP', 'Laravel', 'GroqAI API', 'MySQL'], 'projek-metastats.png')"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="col-md-4 mb-4" data-filter="app">
+            <div class="project-card">
+              <img src="1.jpg" alt="Project 3" class="img-fluid" />
+              <div class="project-overlay">
+                <div class="text-center">
+                  <h5>JogFest (Web App)</h5>
+                  <button
+                    class="btn btn-custom btn-sm mt-2"
+                    onclick="openProjectModal('JogFest (Web App)', 'A comprehensive task management application with real-time updates.', ['HTML', 'CSS', 'Javascript', 'PHP', 'MySQL'], '1.jpg')"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Single Reusable Project Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header border-bottom border-primary">
+            <h5 class="modal-title fw-bold" id="modalTitle"></h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img id="modalImage" src="" alt="Project" class="img-fluid mb-3" />
+            <h6 class="fw-bold">Description</h6>
+            <p id="modalDescription"></p>
+            <h6 class="fw-bold">Technologies Used</h6>
+            <div class="tech-container">
+              <div id="modalTechnologies" class="tech-pills"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="py-5" id="about">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">About Me</h2>
+
+        <div class="row g-4">
+          <!-- Skills Card -->
+          <div class="col-lg-6" data-aos="fade-up">
+            <div class="glass-card">
+              <div class="card-header">
+                <div class="icon-wrapper">
+                  <i class="fas fa-code"></i>
+                </div>
+                <h4>Technical Skills</h4>
+              </div>
+              <div class="skills-container">
+                <div class="skill-category">
+                  <h5>Programming Languages</h5>
+                  <div class="skill-tags">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">PHP</span>
+                  </div>
+                </div>
+
+                <div class="skill-category">
+                  <h5>Frontend Development</h5>
+                  <div class="skill-tags">
+                    <span class="skill-tag">HTML5/CSS3</span>
+                    <span class="skill-tag">Bootsrap</span>
+                    <span class="skill-tag">Tailwind</span>
+                  </div>
+                </div>
+
+                <div class="skill-category">
+                  <h5>Backend Development</h5>
+                  <div class="skill-tags">
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">PHP</span>
+                  </div>
+                </div>
+
+                <div class="skill-category">
+                  <h5>Database & Tools</h5>
+                  <div class="skill-tags">
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Firebase</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificates Card -->
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="glass-card">
+              <div class="card-header">
+                <div class="icon-wrapper">
+                  <i class="fas fa-certificate"></i>
+                </div>
+                <h4>Certifications</h4>
+              </div>
+              <div class="cert-list">
+                <div
+                  class="cert-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#certModal1"
+                >
+                  <div class="cert-content">
+                    <h5>Informatics Expo</h5>
+                    <p>Informatics UII</p>
+                    <span class="cert-date">2024</span>
+                  </div>
+                  <div class="cert-icon">
+                    <i class="fas fa-award"></i>
+                  </div>
+                </div>
+
+                <div
+                  class="cert-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#certModal2"
+                >
+                  <div class="cert-content">
+                    <h5>JavaScript Algorithms</h5>
+                    <p>Codepolitan</p>
+                    <span class="cert-date">2024</span>
+                  </div>
+                  <div class="cert-icon">
+                    <i class="fas fa-award"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Certificate Modals -->
+      <div class="modal fade" id="certModal1" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-bottom border-primary">
+              <h5 class="modal-title">Informatics Expo</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+              <img
+                src="carbonea.png"
+                alt="Informatics Expo UII"
+                class="modal-cert-img"
+              />
+              <div class="mt-4">
+                <h6>Informatics UII</h6>
+                <p>Issued: 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="certModal2" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-bottom border-primary">
+              <h5 class="modal-title">JavaScript Algorithms Certificate</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+              <img
+                src="/api/placeholder/800/600"
+                alt="JavaScript Algorithms Certificate"
+                class="modal-cert-img"
+              />
+              <div class="mt-4">
+                <h6>Codepolitan</h6>
+                <p>Issued: 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="certModal3" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-bottom border-primary">
+              <h5 class="modal-title">UI/UX Fundamentals Certificate</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+              <img
+                src="/api/placeholder/800/600"
+                alt="UI/UX Fundamentals Certificate"
+                class="modal-cert-img"
+              />
+              <div class="mt-4">
+                <h6>Google</h6>
+                <p>Issued: 2022</p>
+                <p>Credential ID: UX-2022-003</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="py-5 bg-dark" id="tech">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Technologies</h2>
+        <div class="row text-center">
+          <div class="col-md-12" data-aos="fade-up">
+            <i
+              class="fab fa-html5 tech-icon"
+              data-bs-toggle="tooltip"
+              title="HTML5"
+            ></i>
+            <i
+              class="fab fa-css3-alt tech-icon"
+              data-bs-toggle="tooltip"
+              title="CSS3"
+            ></i>
+            <i
+              class="fab fa-js tech-icon"
+              data-bs-toggle="tooltip"
+              title="JavaScript"
+            ></i>
+            <i
+              class="fab fa-react tech-icon"
+              data-bs-toggle="tooltip"
+              title="React"
+            ></i>
+            <i
+              class="fab fa-node tech-icon"
+              data-bs-toggle="tooltip"
+              title="Node.js"
+            ></i>
+            <i
+              class="fab fa-git-alt tech-icon"
+              data-bs-toggle="tooltip"
+              title="Git"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5" id="contact">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Contact Me</h2>
+        <div class="row">
+          <div class="col-lg-6 mx-auto">
+            <form data-aos="fade-up" id="contactForm">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  required
+                />
+                <label for="name">Your Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Your Email"
+                  required
+                />
+                <label for="email">Your Email</label>
+              </div>
+              <div class="form-floating mb-3">
+                <textarea
+                  class="form-control"
+                  id="message"
+                  placeholder="Your Message"
+                  style="height: 150px"
+                  required
+                ></textarea>
+                <label for="message">Your Message</label>
+              </div>
+              <button type="submit" class="btn btn-custom w-100">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="py-4"
+      style="
+        background-color: var(--dark);
+        border-top: 2px solid var(--primary);
+      "
+    >
+      <div class="container text-center">
+        <div class="social-icons mb-3">
+          <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="mb-0">&copy; 2025 Portfolio. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
